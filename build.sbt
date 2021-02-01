@@ -4,18 +4,22 @@ name := sys.env.getOrElse("NAME", "maana-feel")
 
 packageName in Docker := sys.env.getOrElse("PACKAGE_NAME", "maana-feel")
 
-description := "Maana FEEL "
+description := "Maana FEEL"
 
-scalaVersion := "2.12.13"
+scalaVersion := "2.13.4"
 scalacOptions ++= Seq("-deprecation", "-feature")
 
 resolvers += Resolver.bintrayRepo("jarlakxen", "maven")
 
 libraryDependencies ++= Seq(
-  Dependencies.drunk,
+  // Dependencies.drunk,
   Dependencies.sangria,
   Dependencies.sangriaSlowlog,
   Dependencies.sangriaCirce,
+  Dependencies.config,
+  // Dependencies.akkaActor,
+  Dependencies.akkaActorTyped,
+  Dependencies.akkaStream,
   Dependencies.akkaHttp,
   Dependencies.akkaHttpCirce,
   Dependencies.circeCore,
@@ -23,7 +27,8 @@ libraryDependencies ++= Seq(
   Dependencies.circeOptics,
   Dependencies.circeGeneric,
   Dependencies.jodaTime,
-  Dependencies.scalatest
+  Dependencies.scalatest,
+  Dependencies.feel
 )
 
 Revolver.settings

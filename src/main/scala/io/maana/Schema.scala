@@ -13,12 +13,13 @@ import sangria.marshalling.circe._
 import com.typesafe.config.ConfigFactory
 import io.maana.Scalars._
 import org.joda.time.DateTime
-import org.camunda.feel
+import org.camunda.feel._
+// import org.camunda.feel.FeelEngine._
 
 import scala.collection.JavaConverters._
 import scala.concurrent.ExecutionContext
 import scala.concurrent.{Await, Future}
-import scala.util.{Failure, Success, Try}
+import scala.util.{Success, Try}
 import scala.concurrent.duration._
 import scala.concurrent.{Await, ExecutionContext, Future}
 
@@ -30,7 +31,7 @@ object Schema {
 
   def feel(expression: String, context: Map[String, Any]) {
 
-    val result: Either[Failure, Boolean] = engine.evalSimpleUnaryTests(expression, context)
+    val result: Either[FeelEngine.Failure, Boolean] = engine.evalUnaryTests(expression, context)
     // or
     // val result: Either[Failure, Any] = engine.evalExpression(expression, context)
 
@@ -85,7 +86,8 @@ object Schema {
     ): Greeting = Profile.prof("Query: testResolver") {
 
       println("This still goes to stdout")
-      feel("1+3")
+
+      feel("1+3", Map.empty)
 
       Greeting(
         id = "greeting",

@@ -12,7 +12,7 @@ import io.circe._
 import io.circe.optics.JsonPath._
 import io.circe.parser._
 import io.maana.http.GraphQLRequestUnmarshaller._
-import io.maana.common.MaanaClient
+// import io.maana.common.MaanaClient
 import io.maana.http.CorsSupport
 import sangria.ast.Document
 import sangria.execution.{ErrorWithResolver, Executor, QueryAnalysisError}
